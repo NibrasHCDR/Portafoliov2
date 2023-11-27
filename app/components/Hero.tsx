@@ -1,4 +1,6 @@
+"use client"
 import React from 'react'
+import { motion } from 'framer-motion'
 
 type Props = {}
 
@@ -6,14 +8,16 @@ const Hero = (props: Props) => {
   return (
     <div className="bg-black/90">
 
-        <div className="w-full min-h-screen h-auto xl:px-24 lg:px-24 md:px-24">
+        <motion.div 
+
+        className="w-full min-h-screen h-auto xl:px-24 lg:px-24 md:px-24 xl:flex xl:justify-center items-center">
           
-          <div className="contenedor-hero h-full xl:p-24 lg:p-8 p-8">
+          <div className="contenedor-hero h-full xl:p-24 lg:p-8 p-8 ">
 
              <div className="hero-1 space-y-3 lg:space-y-8">
 
               <div className="text-center">  
-                <h1 className="xl:text-5xl lg:text-4xl md:text-2xl text-lg text-[#EA1E63] font-oswald">
+                <h1 className="xl:text-5xl lg:text-4xl md:text-2xl text-2xl text-[#EA1E63] font-oswald">
                   ¿Quien Soy?
                 </h1>
 
@@ -22,7 +26,7 @@ const Hero = (props: Props) => {
                 <div className="text-start">
 
                 <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
-                Ingeniero desarrollador proactivo y apasionado por la programación y la tecnología, con 1 año y medio de experiencia en proyectos web. Tuve mi primer acercamiento al mundo del desarrollo y programación hace más de 10 años. Actualmente me destaco por mis excelentes habilidades de adaptabilidad y mis conocimientos en lenguajes de programación como Java, JavaScript, así como el uso de librerías actuales como ReactJS, NextJS 14 o TailwindCSS. Mi trabajo principal es el desarollo Front-End y Full Stack. Estoy siempre dispuesto a trabajar en equipo y a desarrollar mis habilidades en entornos profesionales.
+                Ingeniero desarrollador proactivo y apasionado por la programación, con 1 año y medio de experiencia en proyectos web. Tuve mi primer acercamiento al mundo del desarrollo y programación hace más de 10 años. Actualmente me destaco por mis excelentes habilidades de adaptabilidad y mis conocimientos en lenguajes de programación como Java, JavaScript, así como el uso de librerías actuales como ReactJS, NextJS 14 o TailwindCSS. Mi trabajo principal es el desarollo Front-End y Full Stack. Estoy siempre dispuesto a trabajar en equipo y a desarrollar mis habilidades en entornos profesionales.
 
                 </p>
 
@@ -33,7 +37,7 @@ const Hero = (props: Props) => {
              <div className="hero-2 space-y-3 lg:space-y-8">
              
              <div className="text-center">  
-                <h1 className="xl:text-5xl lg:text-4xl md:text-2xl text-lg text-[#EA1E63] font-oswald">
+                <h1 className="xl:text-5xl lg:text-4xl md:text-2xl text-2xl text-[#EA1E63] font-oswald">
                   Más acerca de mí
                 </h1>
 
@@ -71,7 +75,7 @@ const Hero = (props: Props) => {
 
           </div>
           
-        </div>
+        </motion.div>
         
     </div>
   )
