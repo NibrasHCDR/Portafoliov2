@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import Proyectos from './components/Proyectos'
 import Habilidades from './components/Habilidades'
 import MiCamino from './components/MiCamino'
+import Contacto from './components/Contacto'
+import Footer from './components/Footer'
 
 export default function Home() {
   return (
@@ -26,6 +28,14 @@ export default function Home() {
 
     <section id="habilidades">
         <Habilidades />
+    </section>
+
+    <section id="contacto">
+        <Contacto />
+    </section>
+
+    <section id="footer">
+        <Footer />
     </section>
 
       </>

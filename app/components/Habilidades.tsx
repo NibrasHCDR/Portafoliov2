@@ -1,6 +1,8 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 type Props = {}
 
@@ -15,12 +17,32 @@ function Habilidades({}: Props) {
     const mongodb = 'https://i.postimg.cc/MKybyRLJ/mongodb-icon.png'
     const mysql = 'https://i.postimg.cc/nh5j6W8b/mysql-icon.png'
     const flutter = 'https://i.postimg.cc/0yn40h4v/flutter-icon.png'
+
+    const controls = useAnimation();
+    const { ref, inView } = useInView();
+  
+    useEffect(() => {
+      if (inView) {
+        controls.start({
+          opacity: 1,
+          x: [0],
+          y: [0],
+          scale: 1,
+        });
+      }
+    }, [controls, inView]);
     
 
   return (
-    <div className="bg-black/90 ">
+    <div className="bg-[#293D50]">
 
-        <div className="w-full min-h-screen h-auto xl:px-24 lg:px-24 md:px-24">
+        <motion.div 
+         ref={ref}
+         initial={{ opacity: 0, x: '-50%', y: '-50%', scale: 0.5 }}
+         animate={controls}
+         transition={{ duration: 1 , ease: [0.6, 0.05, 0.5, 0.95]}}
+
+         className="w-full min-h-screen h-auto xl:px-24 lg:px-24 md:px-24">
 
             <div className="contenedor-habilidades myfilter h-full xl:p-24 lg:p-8 p-8 ">
 
@@ -34,7 +56,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-2 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-2 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                    <div className="space-y-2">
 
@@ -50,7 +72,9 @@ function Habilidades({}: Props) {
                      
                       <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">NextJS 14</h1>
 
-                        <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Framework de React actualmente en su versión 14</p>
+                        <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                        Utilizo Next.js 14 de forma habitual en el desarrollo de aplicaciones web
+                          </p>
 
                     </div>
                        
@@ -58,7 +82,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-3 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-3 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                 <div className="space-y-2">
 
@@ -74,7 +98,9 @@ function Habilidades({}: Props) {
  
                   <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">TailwindCSS</h1>
 
-                  <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Utilidad versátil para estilos adaptables</p>
+                  <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                  Con Tailwind CSS  agilizo el proceso de diseño y estructuración de mis proyectos
+                    </p>
 
                  </div>
    
@@ -82,7 +108,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-4 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-4 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                 <div className="space-y-2">
 
@@ -98,7 +124,9 @@ function Habilidades({}: Props) {
 
                        <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">JavaScript</h1>
 
-                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Lenguaje potente y versátil para aplicaciones dinámicas</p>
+                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                       Pilar fundamental en mi caja de herramientas para el desarrollo de mis aplicaciones web
+                        </p>
 
                 </div>
 
@@ -106,7 +134,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-5 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-5 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                    <div className="space-y-2">
 
                    <div className="relative xl:w-14 xl:h-14 lg:h-12 lg:w-12 md:w-12 md:h-12 w-10 h-10">
@@ -121,14 +149,16 @@ function Habilidades({}: Props) {
 
                    <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">TypeScript</h1>
 
-                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Lenguaje Poderoso que complementa y amplía el potencial de JavaScript</p>
+                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                       Lenguaje que utilizo en combinación para escribir componentes y páginas
+                       </p>
 
                     </div>
 
                   </div>
                 </div>
 
-                <div className="habilidades-6 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-6 min-min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                  <div className="space-y-2">
 
@@ -144,7 +174,9 @@ function Habilidades({}: Props) {
 
                     <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">Flutter</h1>
 
-                    <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Con Java Realicé multiples Apps de Escritorio</p>
+                    <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                    He utilizado este marco de trabajo para el desarrollo de aplicaciones móviles frontend
+                      </p>
 
                   </div>
 
@@ -152,7 +184,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-7 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-7 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                  <div className="space-y-2">
 
                     <div className="relative xl:w-14 xl:h-14 lg:h-12 lg:w-12 md:w-12 md:h-12 w-10 h-10">
@@ -167,14 +199,16 @@ function Habilidades({}: Props) {
 
                         <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">Java</h1>
 
-                        <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Con Java Realicé multiples Apps de Escritorio</p>
+                        <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                          Con Java Realicé multiples Apps Administrativas de Escritorio
+                          </p>
 
                   </div>
 
                  </div>
                 </div>
 
-                <div className="habilidades-8 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-8 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
 
                   <div className="space-y-2">
 
@@ -190,7 +224,9 @@ function Habilidades({}: Props) {
 
                       <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">Firebase</h1>
 
-                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Con Java Realicé multiples Apps de Escritorio</p>
+                       <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                       Confío en Firebase como una solución integral para diversas funcionalidades
+                        </p>
 
                     </div>
 
@@ -198,7 +234,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-9 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-9 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                  <div className="space-y-2">
 
@@ -214,7 +250,9 @@ function Habilidades({}: Props) {
 
                      <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">MongoDB</h1>
 
-                     <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Con Java Realicé multiples Apps de Escritorio</p>
+                     <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                     He empleado MongoDB como base de datos NoSQL para almacenar y gestionar datos
+                      </p>
 
                    </div>
 
@@ -222,7 +260,7 @@ function Habilidades({}: Props) {
 
                 </div>
 
-                <div className="habilidades-10 min-h-[220px] max-h-[220px] border-[2px] p-3 rounded-md border-white">
+                <div className="habilidades-10 min-h-[270px] max-h-[270px] border-[2px] p-3 rounded-md border-white transition-all duration-300 hover:scale-105 no-select cursor-pointer">
                 
                 <div className="space-y-2">
 
@@ -238,7 +276,9 @@ function Habilidades({}: Props) {
 
                       <h1 className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-oswald">MySQL</h1>
 
-                      <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">Con Java Realicé multiples Apps de Escritorio</p>
+                      <p className="xl:text-3xl lg:text-2xl md:text-xl text-lg text-white font-darkergrotesque">
+                      Uyilizo MySQL en conjunto con Java para diversos proyectos de escritorio
+                        </p>
 
                    </div>
 
@@ -248,7 +288,7 @@ function Habilidades({}: Props) {
 
             </div>
 
-        </div>
+        </motion.div>
         
     </div>
   )

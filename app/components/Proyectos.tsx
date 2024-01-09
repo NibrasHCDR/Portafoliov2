@@ -9,25 +9,42 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import style from '../../app/styles/swiper.module.css';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
+import { useInView } from 'react-intersection-observer';
 
 type Props = {}
 
+const hrefAplicaciones = '/Aplicaciones'
+
 const projectsBackgrounds = [
   'https://i.postimg.cc/90L4gWfp/xplendev-Proyext.png',
-  'https://i.postimg.cc/bvYFtgt2/Gallery-Web-Page.png',
+  'https://i.postimg.cc/52hfYm4s/Screenshot-6.png',
   'https://i.postimg.cc/8PtvCbNY/elegant-proyect.png',
+  'https://i.postimg.cc/bvYFtgt2/Gallery-Web-Page.png',
   // ... Agrega todas las URL de las imágenes de fondo de tus proyectos aquí
 ];
 
 const projectsBackgroundsMobile = [
   'https://i.postimg.cc/d3HJb6yM/future-xpelndev-2icon.png',
-  'https://i.postimg.cc/kMK80hwN/gallery-icon.png',
+  'https://i.postimg.cc/bJ3S9Vk4/portfoliorespponsive-1.png',
   'https://i.postimg.cc/MKzSDhgn/Elegantcannine-icon.png',
+  'https://i.postimg.cc/kMK80hwN/gallery-icon.png',
   // ... otras URLs de imágenes para móviles
 ];
 
 function Proyectos({}: Props) {
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1, scale: 1
+      });
+    }
+  }, [controls, inView]);
+  
   const [currentBackground, setCurrentBackground] = useState('');
   const [isMobile, setIsMobile] = useState(false);
 
@@ -66,11 +83,13 @@ function Proyectos({}: Props) {
   };
 
   return (
+
+    <div className="bg-black">
+
+    
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+
         className="w-full h-auto transition-all duration-300"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${currentBackground})`,
@@ -86,17 +105,18 @@ function Proyectos({}: Props) {
           </div>
         </div>
 
-        <div className="w-full min-h-screen h-full">
+        <motion.div
+         ref={ref}
+         initial={{ opacity: 0, scale: 0.5 }}
+         animate={controls}
+         transition={{ duration: 1, ease: [0.6, 0.05, 0.5, 0.95]}}
+         className="w-[180px] md:w-[380px] mx-auto min-h-screen h-full">
           <Swip onSlideChange={handleSlideChange} onSwiper={updateBackground} />
 
-          <div className="flex justify-center items-center md:p-12 p-4">
-            <button className="xl:text-lg lg:text-lg md:text-md text-md border-2 bg-[#EA1E63] text-white px-6 py-2 rounded-full transition-all ease-in-out hover:scale-105 duration-300">
-              Ver Todo
-            </button>
-          </div>
-        </div>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
+    </div>
   );
 }
 
