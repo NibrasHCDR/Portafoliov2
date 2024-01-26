@@ -164,7 +164,7 @@ function Contacto({}: Props) {
 
                <div className="contacto-4 pt-8 w-full">
 
-                  <form action="https://formsubmit.co/921d34b94e1770ce31635ee273a416e9" method="POST">
+                  <form action="https://formsubmit.co/l.riveraa6642@hotmail.com" method="POST">
 
                      <div className="grid md:space-y-2 space-y-1">
 
