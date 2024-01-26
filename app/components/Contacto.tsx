@@ -186,7 +186,7 @@ function Contacto({}: Props) {
 
                            </input>
 
-                             <textarea placeholder='Tu mensaje' name="mendaje" id="" className="border-2 rounded-md xl:text-3xl lg:text-2xl md:text-xl text-lg text-black font-darkergrotesque px-2 lg:py-1 border-[#EA1E63] placeholder:text-[#EA1E63] w-full h-[190px] min-h-[190px] max-h-[190px]" required>
+                             <textarea placeholder='Tu mensaje' name="mensaje" id="" className="border-2 rounded-md xl:text-3xl lg:text-2xl md:text-xl text-lg text-black font-darkergrotesque px-2 lg:py-1 border-[#EA1E63] placeholder:text-[#EA1E63] w-full h-[190px] min-h-[190px] max-h-[190px]" required>
 
                              </textarea>
 
